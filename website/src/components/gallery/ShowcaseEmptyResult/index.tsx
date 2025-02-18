@@ -79,7 +79,7 @@ export default function ShowcaseEmptyResult({ id }: { id: string }) {
             </Text>
             <FluentUILink
               key="emptySearch_contributeTemplate"
-              href="https://azure.github.io/awesome-azd/docs/intro"
+              href="https://azure.github.io/awesome-azd/docs/contribute"
               target="_blank"
               className={styles.colorLink}
             >
@@ -87,7 +87,7 @@ export default function ShowcaseEmptyResult({ id }: { id: string }) {
             </FluentUILink>
             <FluentUILink
               key="emptySearch_requestBoard"
-              href="https://github.com/Azure/awesome-azd/issues/new?assignees=nigkulintya%2C+savannahostrowski&labels=requested-contribution&template=%F0%9F%A4%94-submit-a-template-request.md&title=%5BIdea%5D+%3Cyour-template-name%3E"
+              href="https://github.com/Azure/awesome-azd/issues/new?assignees=kristenwomack%2C+savannahostrowski&labels=requested-contribution&template=%F0%9F%A4%94-submit-a-template-request.md&title=%5BIdea%5D+%3Cyour-template-name%3E"
               target="_blank"
               className={styles.colorLink}
             >

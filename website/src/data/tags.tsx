@@ -36,6 +36,8 @@ export type TagType =
   | "python"
   | "django"
   | "reactjs"
+  | "vuejs"
+  | "angular"
   | "nodejs"
   | "kubernetes"
   | "keda"
@@ -43,11 +45,11 @@ export type TagType =
   | "prometheus"
   | "appservice"
   | "cosmosdb"
+  | "azuredatafactory"
   | "monitor"
   | "keyvault"
   | "aca"
   | "mongodb"
-  | "signalR"
   | "functions"
   | "blobstorage"
   | "azuredb-postgreSQL"
@@ -59,22 +61,22 @@ export type TagType =
   | "servicebus"
   | "vnets"
   | "fastapi"
-  | "fhir"
-  | "ahds"
   | "appinsights"
   | "loganalytics"
-  | "cognitivesearch"
+  | "aisearch"
   | "openai"
   | "azureai"
   | "flask"
   | "apim"
   | "spring"
+  | "quarkus"
+  | "javaee"
   | "thymeleaf"
   | "sap"
+  | "sapcap"
   | "sapcloudsdk"
   | "nestjs"
   | "dataverse"
-  | "chatgpt"
   | "aks"
   | "azurecdn"
   | "frontdoor"
@@ -93,7 +95,45 @@ export type TagType =
   | "semantickernel"
   | "webcomponents"
   | "microfrontend"
-  | "blazor";
+  | "blazor"
+  | "azuredb-mySQL"
+  | "eventhub"
+  | "azurestorage"
+  | "helm"
+  | "dall-e"
+  | "gpt"
+  | "azureappconfig"
+  | "ruby"
+  | "rubyonrails"
+  | "serverlessapi"
+  | "langchain"
+  | "aicollection"
+  | "aistudio"
+  | "apicenter"
+  | "eventgrid"
+  | "diagnosticsettings"
+  | "managedidentity"
+  | "serviceprincipal"
+  | "logicapps"
+  | "msal"
+  | "pinecone"
+  | "nextjs"
+  | "speechservice"
+  | "kernelmemory"
+  | "promptengineering"
+  | "rag"
+  | "langchain4j"
+  | "featureExperimentation"
+  | "featuremanagement"
+  | "go"
+  | "powershell"
+  | "autogen"
+  | "dab"
+  | "sharepoint"
+  | "virtualmachine"
+  | "sentinel"
+  | "trafficmgr"
+  | "chainlit";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -124,6 +164,10 @@ export const Tags: { [type in TagType]: Tag } = {
   popular: {
     label: "Popular",
     description: "This tag is used for popular templates.",
+  },
+  aicollection: {
+    label: "AI Collection",
+    description: "This tag is used for templates included in the Microsoft-curated AI collection.",
   },
 
   //============  FOR REGULAR USE
@@ -165,14 +209,19 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses PHP",
     type: "Language",
   },
+  ruby: {
+    label: "Ruby",
+    description: "Template architecture uses Ruby",
+    type: "Language",
+  },
+  go: {
+    label: "Go",
+    description: "Template contains Go app code",
+    type: "Language",
+  },
 
   // ---- Tools
 
-  reactjs: {
-    label: "React.js",
-    description: "Template architecture uses React.js",
-    type: "Tools",
-  },
   sap: {
     label: "SAP",
     description:
@@ -184,14 +233,20 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses SAP Cloud SDK",
     type: "Tools",
   },
+  sapcap: {
+    label: "SAP CAP",
+    description:
+      "Template architecture uses SAP Cloud Application Programming Model",
+    type: "Tools",
+  },
   thymeleaf: {
     label: "Thymeleaf",
     description: "Template architecture uses Thymeleaf template engine",
     type: "Tools",
   },
-  chatgpt: {
-    label: "ChatGPT",
-    description: "Template architecture uses ChatGPT model",
+  "dall-e": {
+    label: "Dall-E",
+    description: "Template architecture uses Dall-E",
     type: "Tools",
   },
   jupyter: {
@@ -216,6 +271,36 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Web Components",
     type: "Tools",
   },
+  helm: {
+    label: "Helm",
+    description: "Template architecture uses Helm",
+    type: "Tools",
+  },
+  gpt: {
+    label: "GPT",
+    description: "Template architecture uses GPT AI model",
+    type: "Tools",
+  },
+  msal: {
+    label: "Microsoft Authentication Library",
+    description: "Template architecture uses Microsoft Authentication Library",
+    type: "Tools",
+  },
+  featuremanagement: {
+    label: "Microsoft Feature Management",
+    description: "Template architecture uses Microsoft Feature Management",
+    type: "Tools",
+  },
+  powershell: {
+    label: "PowerShell",
+    description: "Template architecture uses PowerShell",
+    type: "Tools",
+  },
+  dab: {
+    label: "Data API builder",
+    description: "Template architecture uses Data API builder (DAB)",
+    type: "Tools",
+  },
 
   // ---- Infrastructure as Code
   bicep: {
@@ -238,6 +323,39 @@ export const Tags: { [type in TagType]: Tag } = {
   prometheus: {
     label: "Prometheus",
     description: "Template architecture uses Prometheus",
+    type: "Database",
+  },
+  pinecone: {
+    label: "Pinecone",
+    description: "Template architecture uses Pinecone",
+    type: "Database",
+  },
+  cosmosdb: {
+    label: "Azure Cosmos DB",
+    description: "Template architecture uses Azure Cosmos DB",
+    azureIcon: "./img/Azure-Cosmos-DB.svg",
+    url: "https://azure.microsoft.com/products/cosmos-db/",
+    type: "Database",
+  },
+  azuresql: {
+    label: "Azure SQL",
+    description: "Template architecture uses Azure SQL",
+    azureIcon: "./img/Azure-SQL.svg",
+    url: "https://azure.microsoft.com/products/azure-sql/database",
+    type: "Database",
+  },
+  "azuredb-postgreSQL": {
+    label: "Azure PostgreSQL",
+    description: "Template architecture uses Azure Database for PostgreSQL",
+    azureIcon: "./img/Azure-PostgreSQL.svg",
+    url: "https://azure.microsoft.com/products/postgresql",
+    type: "Database",
+  },
+  "azuredb-mySQL": {
+    label: "Azure MySQL",
+    description: "Template architecture uses Azure Database for MySQL",
+    azureIcon: "./img/Azure-MySQL.svg",
+    url: "https://azure.microsoft.com/products/mysql",
     type: "Database",
   },
 
@@ -267,6 +385,31 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Spring framework",
     type: "Framework",
   },
+  quarkus: {
+    label: "Quarkus",
+    description: "Template architecture uses Quarkus framework",
+    type: "Framework",
+  },
+  javaee: {
+    label: "JavaEE",
+    description: "Template architecture uses Jakarta EE framework",
+    type: "Framework",
+  },
+  vuejs: {
+    label: "Vue.js",
+    description: "Template architecture uses Vue.js framework",
+    type: "Framework",
+  },
+  reactjs: {
+    label: "React",
+    description: "Template architecture uses React framework",
+    type: "Framework",
+  },
+  angular: {
+    label: "Angular",
+    description: "Template architecture uses Angular framework",
+    type: "Framework",
+  },
   streamlit: {
     label: "Streamlit",
     description: "Template architecture uses Streamlit library",
@@ -287,6 +430,47 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Blazor",
     type: "Framework",
   },
+  rubyonrails: {
+    label: "Ruby on Rails",
+    description:
+      "Template architecture uses Ruby on Rails web application framework",
+    type: "Framework",
+  },
+  langchain: {
+    label: "LangChain",
+    description: "Template architecture uses LangChain framework",
+    type: "Framework",
+  },
+  nextjs: {
+    label: "Next.js",
+    description: "Template architecture uses Next.js framework",
+    type: "Framework",
+  },
+  kernelmemory: {
+    label: "Kernel Memory",
+    description: "Template architecture uses Kernel Memory",
+    type: "Framework",
+  },
+  rag: {
+    label: "Retrieval-Augmented Generation",
+    description: "Template architecture uses Retrieval-Augmented Generation",
+    type: "Framework",
+  },
+  langchain4j: {
+    label: "LangChain4j",
+    description: "Template architecture uses LangChain4j framework",
+    type: "Framework",
+   },
+  autogen: {
+    label: "Microsoft AutoGen",
+    description: "Template architecture uses Microsoft AutoGen",
+    type: "Framework",
+  },
+  chainlit: {
+    label: "Microsoft AutoGen",
+    description: "Template architecture uses Microsoft AutoGen",
+    type: "Framework",
+  },
 
   // ---- Platform
   kubernetes: {
@@ -296,12 +480,6 @@ export const Tags: { [type in TagType]: Tag } = {
   },
 
   // ---- Service
-  fhir: {
-    label: "FHIR Service",
-    description:
-      "Template architecture uses Fast Healthcare Interoperability Resources (FHIR) service",
-    type: "Service",
-  },
   dataverse: {
     label: "Dataverse",
     description: "Template architecture uses Microsoft Dataverse",
@@ -312,16 +490,18 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Web Apps",
     type: "Service",
   },
-
-  // ---- Azure Services
-  ahds: {
-    label: "Azure Health Data Service",
-    description:
-      "Template architecture uses Azure Health Data Services workspace",
-    azureIcon: "./img/Azure-Health-Data-Service.svg",
-    url: "https://azure.microsoft.com/products/health-data-services/",
+  serverlessapi: {
+    label: "Serverless API",
+    description: "Template architecture uses Serverless API",
     type: "Service",
   },
+  sharepoint: {
+    label: "SharePoint",
+    description: "Template architecture involves a connection to SharePoint",
+    type: "Service",
+  },
+
+  // ---- Azure Services
   appinsights: {
     label: "Azure Application Insights",
     description: "Template architecture uses Azure Application Insights",
@@ -364,20 +544,6 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/products/container-apps",
     type: "Service",
   },
-  cosmosdb: {
-    label: "Azure CosmosDB",
-    description: "Template architecture uses Azure CosmosDB",
-    azureIcon: "./img/Azure-Cosmos-DB.svg",
-    url: "https://azure.microsoft.com/products/cosmos-db/",
-    type: "Service",
-  },
-  signalR: {
-    label: "Azure SignalR",
-    description: "Template architecture uses Azure SignalR",
-    azureIcon: "./img/Azure-SignalR.svg",
-    url: "https://azure.microsoft.com/products/signalr-service",
-    type: "Service",
-  },
   functions: {
     label: "Azure Functions",
     description: "Template architecture uses Azure Functions",
@@ -391,20 +557,6 @@ export const Tags: { [type in TagType]: Tag } = {
     azureIcon: "./img/Azure-Storage.svg",
     url: "https://azure.microsoft.com/products/storage/blobs",
     type: "Service",
-  },
-  azuresql: {
-    label: "Azure SQL",
-    description: "Template architecture uses Azure SQL",
-    azureIcon: "./img/Azure-SQL.svg",
-    url: "https://azure.microsoft.com/products/azure-sql/database",
-    type: "Database",
-  },
-  "azuredb-postgreSQL": {
-    label: "Azure PostgreSQL",
-    description: "Template architecture uses Azure Database for PostgreSQL",
-    azureIcon: "./img/Azure-PostgreSQL.svg",
-    url: "https://azure.microsoft.com/products/postgresql",
-    type: "Database",
   },
   swa: {
     label: "Azure Static Web Apps",
@@ -427,11 +579,11 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/products/virtual-network",
     type: "Service",
   },
-  cognitivesearch: {
-    label: "Azure Cognitive Search",
-    description: "Template architecture uses Azure Cognitive Search",
-    azureIcon: "./img/Azure-Cognitive-Search.svg",
-    url: "https://azure.microsoft.com/products/ai-services/cognitive-search",
+  aisearch: {
+    label: "Azure AI Search",
+    description: "Template architecture uses Azure AI Search",
+    azureIcon: "./img/Azure-AI-Search.svg",
+    url: "https://azure.microsoft.com/products/ai-services/ai-search",
     type: "Service",
   },
   openai: {
@@ -447,6 +599,13 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template architecture uses Azure AI Service",
     azureIcon: "./img/Azure-AI-Service.svg",
     url: "https://azure.microsoft.com/solutions/ai",
+    type: "Service",
+  },
+  speechservice: {
+    label: "Azure Speech Services",
+    description: "Template architecture uses Azure AI Speech Services",
+    azureIcon: "./img/Azure-Speech-Services.svg",
+    url: "https://azure.microsoft.com/en-us/products/ai-services/ai-speech",
     type: "Service",
   },
   apim: {
@@ -519,6 +678,104 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/products/deployment-environments",
     type: "Service",
   },
+  eventhub: {
+    label: "Azure Event Hubs",
+    description: "Template architecture uses Azure Event Hubs",
+    azureIcon: "./img/Azure-Event-Hubs.svg",
+    url: "https://azure.microsoft.com/products/event-hubs",
+    type: "Service",
+  },
+  azurestorage: {
+    label: "Azure Storage",
+    description: "Template architecture uses Azure Storage",
+    azureIcon: "./img/Azure-Storage.svg",
+    url: "https://azure.microsoft.com/products/storage",
+    type: "Service",
+  },
+  azureappconfig: {
+    label: "Azure App Configuration",
+    description: "Template architecture uses Azure App Configuration",
+    azureIcon: "./img/Azure-App-Configuration.svg",
+    url: "https://azure.microsoft.com/products/app-configuration",
+    type: "Service",
+  },
+  aistudio: {
+    label: "Azure AI Studio",
+    description: "Template architecture uses Azure AI Studio",
+    azureIcon: "./img/Azure-AI-Studio.svg",
+    url: "https://azure.microsoft.com/products/ai-studio",
+    type: "Service",
+  },
+  apicenter: {
+    label: "Azure API Center",
+    description: "Template architecture uses Azure API Center",
+    azureIcon: "./img/Azure-API-Center.svg",
+    url: "https://learn.microsoft.com/azure/api-center/overview",
+    type: "Service",
+  },
+  eventgrid: {
+    label: "Azure Event Grid",
+    description: "Template architecture uses Azure Event Grid",
+    azureIcon: "./img/Azure-Event-Grid.svg",
+    url: "https://learn.microsoft.com/azure/event-grid/overview",
+    type: "Service",
+  },
+  diagnosticsettings: {
+    label: "Azure Diagnostic Settings",
+    description: "Template architecture uses Azure Diagnostic Settings",
+    azureIcon: "./img/Azure-Diagnostic-Settings.svg",
+    url: "https://learn.microsoft.com/azure/azure-monitor/essentials/diagnostic-settings",
+    type: "Service",
+  },
+  logicapps: {
+    label: "Azure Logic Apps",
+    description: "Template architecture uses Azure Logic Apps",
+    azureIcon: "./img/Azure-Logic-Apps.svg",
+    url: "https://learn.microsoft.com/azure/logic-apps/logic-apps-overview",
+    type: "Service",
+  },
+  managedidentity: {
+    label: "Azure Managed Identities",
+    description: "Template architecture uses Azure Managed Identities",
+    azureIcon: "./img/Azure-Managed-Identities.svg",
+    url: "https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/overview",
+    type: "Service",
+  },
+  serviceprincipal: {
+    label: "Azure Service Principal",
+    description: "Template architecture uses Azure Service Principal",
+    azureIcon: "./img/Azure-Service-Principal.svg",
+    url: "https://learn.microsoft.com/entra/identity-platform/app-objects-and-service-principals",
+    type: "Service",
+  },
+  azuredatafactory: {
+    label: "Azure Data Factory",
+    description: "Template architecture uses Azure Data Factory",
+    azureIcon: "./img/Azure-Data-Factory.svg",
+    url: "https://learn.microsoft.com/azure/data-factory/introduction",
+    type: "Service",
+  },
+  virtualmachine: {
+    label: "Azure Virtual Machine",
+    description: "Template architecture uses Azure Virtual Machine",
+    azureIcon: "./img/Azure-Virtual-Machine.svg",
+    url: "https://azure.microsoft.com/azure/virtual-machines",
+    type: "Service",
+  },
+  sentinel: {
+    label: "Azure Sentinel",
+    description: "Template architecture uses Azure Sentinel",
+    azureIcon: "./img/Microsoft-Sentinel.svg",
+    url: "https://azure.microsoft.com/en-us/products/microsoft-sentinel/",
+    type: "Service",
+  },
+  trafficmgr: {
+    label: "Azure Traffic Manager",
+    description: "Template architecture uses Azure Traffic Manager",
+    azureIcon: "./img/trafficmgr.svg",
+    url: "https://azure.microsoft.com/products/traffic-manager",
+    type: "Service",
+  },
 
   // For Topics
   datascience: {
@@ -540,6 +797,16 @@ export const Tags: { [type in TagType]: Tag } = {
   platformengineering: {
     label: "Platform Engineering",
     description: "Template architecture involves Platform Engineering",
+    type: "Topic",
+  },
+  promptengineering: {
+    label: "Prompt Engineering",
+    description: "Template architecture involves Prompt Engineering",
+    type: "Topic",
+  },
+  featureExperimentation: {
+    label: "Feature Experimentation",
+    description: "Template architecture involves Feature Experimentation",
     type: "Topic",
   },
 };

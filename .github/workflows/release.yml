@@ -4,15 +4,19 @@ name: Release Awesome Azd
 on:
   workflow_dispatch:
 
+permissions:
+  id-token: write
+  contents: write
+  
 jobs:
   deploy:
     name: Deploy Site To GitHub Pages
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: npm
           cache-dependency-path: website/package-lock.json
       - name: Build website
@@ -20,6 +24,10 @@ jobs:
         run: |
           npm ci
           npm run build
+      - name: Test
+        working-directory: website
+        run: |
+          npm test
 
       # Popular action to deploy to GitHub Pages:
       # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus

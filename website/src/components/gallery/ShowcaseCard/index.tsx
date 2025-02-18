@@ -62,17 +62,21 @@ const darkTheme: PartialTheme = {
 
 function ShowcaseCard({ user }: { user: User }): JSX.Element {
   const styles = useStyles();
+  const title = user.title;
   const tags = user.tags;
   const source = user.source;
   const star = useBaseUrl("/img/Sparkle.svg");
   const fire = useBaseUrl("/img/Fire.svg");
   let azdInitCommand =
-    "azd init -t " + source.replace("https://github.com/", "");
-  if (azdInitCommand.includes("Azure-Samples/")) {
-    azdInitCommand = azdInitCommand.replace("Azure-Samples/", "");
+    "azd init -t " + source.replace("https://github.com/", "").toLowerCase();
+  if (azdInitCommand.includes("azure-samples/")) {
+    azdInitCommand = azdInitCommand.replace("azure-samples/", "");
   }
   let headerLogo = useBaseUrl("/img/Community.svg");
   let headerText = "Community Authored";
+
+  // Adobe Analytics Content
+  const contentForAdobeAnalytics = `{\"id\":\"${title}\",\"cN\":\"Copy Button (azd init)\"}`;
 
   // Panel
   const { colorMode } = useColorMode();
@@ -138,7 +142,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
     );
 
   return (
-    <Card key={user.title} className={styleCSS.card}>
+    <Card key={title} className={styleCSS.card}>
       <CardHeader
         header={
           <div
@@ -207,7 +211,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
         }}
       >
         <FluentUILink className={styleCSS.cardTitle} onClick={openPanel}>
-          {user.title}
+          {title}
         </FluentUILink>
         <div
           style={{
@@ -216,22 +220,21 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
             paddingTop: "2px",
             alignItems: "center",
             columnGap: "3px",
+            overflow: "hidden",
           }}
         >
           <div className={styleCSS.cardTextBy}>by</div>
-          <div style={{ fontSize: "12px" }}>
-            <ShowcaseMultipleAuthors
-              key={"author_" + user.title}
-              user={user}
-              cardPanel={false}
-            />
-          </div>
+          <ShowcaseMultipleAuthors
+            key={"author_" + title}
+            user={user}
+            cardPanel={false}
+          />
         </div>
         <div className={styleCSS.cardDescription}>{user.description}</div>
         {/* Panel is Fluent UI 8. Must use ThemeProvider */}
         <ThemeProvider theme={colorMode != "dark" ? lightTheme : darkTheme}>
           <Panel
-            headerText={user.title}
+            headerText={title}
             isLightDismiss
             isOpen={isOpen}
             onDismiss={dismissPanel}
@@ -243,7 +246,12 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
           </Panel>
         </ThemeProvider>
         <div
-          style={{ paddingTop: "10px", position: "absolute", bottom: "0px" }}
+          style={{
+            paddingTop: "10px",
+            position: "absolute",
+            bottom: "0px",
+            width: "100%",
+          }}
         >
           <div
             className={styles.cardTag}
@@ -254,20 +262,21 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
               flexFlow: "wrap",
             }}
           >
-            <ShowcaseCardTag key={user.title} tags={user.tags} moreTag={true} />
+            <ShowcaseCardTag key={title} tags={tags} moreTag={true} />
           </div>
         </div>
       </div>
       <CardPreview className={styleCSS.cardBreakLine} />
       <CardFooter>
         <Input
-          id={"input_" + user.title}
+          id={"input_" + title}
           size="small"
           spellCheck={false}
           defaultValue={azdInitCommand}
           className={styleCSS.input}
+          placeholder={azdInitCommand}
         />
-        <Popover withArrow size="small">
+        <Popover trapFocus withArrow size="small">
           <PopoverTrigger disableButtonEnhancement>
             <Button
               size="small"
@@ -275,6 +284,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
               onClick={() => {
                 navigator.clipboard.writeText(azdInitCommand);
               }}
+              data-m={contentForAdobeAnalytics}
             >
               <img src={useBaseUrl("/img/Copy.svg")} height={20} alt="Copy" />
             </Button>
